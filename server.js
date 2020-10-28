@@ -1,14 +1,13 @@
+
 var express = require("express");
 var exphbs = require("express-handlebars");
 var mysql = require("mysql");
 
 var app = express();
 
-// Set the port of our application
-// process.env.PORT lets the port be set by Heroku
 var PORT = process.env.PORT || 8080;
 
-// Sets up the Express app to handle data parsing
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
@@ -36,7 +35,7 @@ app.get("/", function (req, res) {
     connection.query("SELECT * FROM burger;", function (err, data) {
         if (err) throw err;
 
-        res.render("burger", { typeof: data });
+        res.render("index", { typeof: data });
     });
 });
 
@@ -55,7 +54,6 @@ app.listen(PORT, function () {
     console.log("Server listening on: http://localhost:" + PORT);
 });
 
-// Delete a plan
 app.delete("/api/burger/:id", function(req, res) {
   connection.query("DELETE FROM burger WHERE id = ?", [req.params.id], function(err, result) {
     if (err) {
@@ -69,4 +67,3 @@ app.delete("/api/burger/:id", function(req, res) {
 
   });
 });
-
