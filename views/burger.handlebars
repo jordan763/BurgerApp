@@ -1,0 +1,37 @@
+<ul>
+  {{#each typeof}}
+  	<li>
+  	   <p>ID #: {{this.id}}</p>
+       <p>Type of Burger: {{this.typeof}}</p>
+       <button data-planid="{{this.id}}" class="delplan">Devour it!</button>
+  	</li>
+  {{/each}}
+</ul>
+
+<form action="/" method="POST">
+	<textarea type="text" name="typeof"></textarea>
+
+	<button type="submit">Submit</button>
+</form>
+<script type="text/javascript">
+
+  $(".delplan").on("click", function(event) {
+    // Get the ID from the button.
+    // This is shorthand for $(this).attr("data-planid")
+    var id = $(this).data("planid");
+
+    // Send the DELETE request.
+    $.ajax("/api/burger/" + id, {
+      type: "DELETE"
+    }).then(
+      function() {
+        console.log("deleted id ", id);
+        // Reload the page to get the updated list
+        location.reload();
+      }
+    );
+  });
+
+
+
+</script>
