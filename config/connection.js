@@ -10,7 +10,7 @@ if (process.env.JAWSDB_URL){
     port: 3306,
     user: "root",
     password: "1qaz2wsx!QAZ@WSX",
-    database: "b24eguod2tp6xri7"
+    database: "cat_db"
   });
 }
 
