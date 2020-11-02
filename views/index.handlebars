@@ -1,28 +1,71 @@
+<h1 id="title">BurgerApp!</h1>
+
+<img src="https://storcpdkenticomedia.blob.core.windows.net/media/recipemanagementsystem/media/recipe-media-files/recipes/retail/x17/2019_df_retail_butter-burger_20912_760x580.jpg?ext=.jpg" alt="burger" class="burgerPic">
+
+{{!-- <h2>Burgers Devoured</h2>
+
 <ul>
-  {{#each typeof}}
-  	<li>
-  	   <p>ID #: {{this.id}}</p>
-       <p>Type of Burger: {{this.typeof}}</p>
-       <button data-planid="{{this.id}}" class="delplan">Devour it!</button>
-  	</li>
+  {{#each cats}}
+    {{#unless sleepy}}
+      {{> cats/cat-block sleep=true}}
+    {{/unless}}
   {{/each}}
-</ul>
+</ul> --}}
 
-<form action="/" method="POST">
-	<textarea type="text" name="typeof"></textarea>
+{{!-- <h2>Burgers ready to be Devoured</h2> --}}
 
-	<button type="submit">Submit</button>
+
+<table id= "table1">
+  <tr>
+    <th>Burgers Devoured</th>
+  </tr>
+  <tr>
+    <td><ul>
+  {{#each cats}}
+    {{#unless sleepy}}
+      {{> cats/cat-block sleep=true}}
+    {{/unless}}
+  {{/each}}
+</ul></td>
+  </tr>
+  </table>
+
+  <table id="table2">
+    <th>Burgers ready to be Devoured</th>
+  </tr>
+  <tr>
+    <td><ul>
+  {{#each cats}}
+    {{#if sleepy}}
+      {{> cats/cat-block sleep=false}}
+    {{/if}}
+  {{/each}}
+</ul></td>
+</table>
+
+
+
+{{!-- <ul>
+  {{#each cats}}
+    {{#if sleepy}}
+      {{> cats/cat-block sleep=false}}
+    {{/if}}
+  {{/each}}
+</ul> --}}
+
+<h2 class="addBurger">Add a Burger</h2>
+<form class="create-form">
+
+  <div class="form-group">
+    <label for="ca">Type of Burger:</label>
+    <input type="text" id="ca" name="name">
+  </div>
+
+  <div class="form-group" hidden>
+    <label for="slee">Sleepy?</label><br>
+    <input type="radio" name="sleepy" value="1" checked> Devoured!<br>
+    <input type="radio" name="sleepy" value="0"> Awake
+  </div>
+
+  <button type="submit">Submit</button>
 </form>
-<script type="text/javascript">
-  $(".delplan").on("click", function(event) {
-    var id = $(this).data("planid");
-    $.ajax("/api/burger/" + id, {
-      type: "DELETE"
-    }).then(
-      function() {
-        console.log("deleted id ", id);
-        location.reload();
-      }
-    );
-  });
-</script>

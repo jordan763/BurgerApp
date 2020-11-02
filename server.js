@@ -1,69 +1,29 @@
-
 var express = require("express");
-var exphbs = require("express-handlebars");
-var mysql = require("mysql");
-
-var app = express();
 
 var PORT = process.env.PORT || 8080;
 
+var app = express();
 
+// Serve static content for the app from the "public" directory in the application directory.
+app.use(express.static("public"));
+
+// Parse application body
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+// Set Handlebars.
+var exphbs = require("express-handlebars");
 
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
-var connection = mysql.createConnection({
-  host: "localhost",
-  port: 3306,
-  user: "root",
-  password: "1qaz2wsx!QAZ@WSX",
-  database: "burgerdb"
-});
+// Import routes and give the server access to them.
+var routes = require("./controllers/catsController.js");
 
-connection.connect(function(err) {
-  if (err) {
-    console.error("error connecting: " + err.stack);
-    return;
-  }
+app.use(routes);
 
-  console.log("connected as id " + connection.threadId);
-});
-
-app.get("/", function (req, res) {
-    connection.query("SELECT * FROM burger;", function (err, data) {
-        if (err) throw err;
-
-        res.render("index", { typeof: data });
-    });
-});
-
-
-app.post("/", function (req, res) {
-
-    connection.query("INSERT INTO burger (typeof) VALUES (?)", [req.body.typeof], function (err, result) {
-        if (err) throw err;
-
-        res.redirect("/");
-    });
-});
-
-
-app.listen(PORT, function () {
-    console.log("Server listening on: http://localhost:" + PORT);
-});
-
-app.delete("/api/burger/:id", function(req, res) {
-  connection.query("DELETE FROM burger WHERE id = ?", [req.params.id], function(err, result) {
-    if (err) {
-      return res.status(500).end();
-    }
-    else if (result.affectedRows === 0) {
-
-      return res.status(404).end();
-    }
-    res.status(200).end();
-
-  });
+// Start our server so that it can begin listening to client requests.
+app.listen(PORT, function() {
+  // Log (server-side) when our server has started
+  console.log("Server listening on: http://localhost:" + PORT);
 });

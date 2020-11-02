@@ -1,26 +1,19 @@
 {
-  "name": "burgerapp",
+  "name": "mvc_design",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
-  "dependencies": {
-    "express": "^4.17.1",
-    "express-handlebars": "^5.2.0",
-    "mysql": "^2.18.1"
-  },
-  "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jordan763/BurgerApp.git"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/jordan763/BurgerApp/issues"
+  "dependencies": {
+    "express": "^4.16.3",
+    "express-handlebars": "^3.0.0",
+    "mysql": "^2.16.0"
   },
-  "homepage": "https://github.com/jordan763/BurgerApp#readme"
+  "devDependencies": {
+    "handlebars-helper-css": "^0.1.0"
+  }
 }

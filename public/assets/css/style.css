@@ -1,0 +1,51 @@
+li {
+  padding: 5px;
+  margin: 5px;
+  background: #faebd7;
+}
+
+.label {
+  font-weight: bold;
+}
+
+.create-update-form {
+  padding: 5px;
+  margin: 5px;
+  background: aqua;
+}
+
+.form-group {
+  margin-bottom: 5px;
+}
+
+.create-form {
+  text-align: center;
+}
+
+.addBurger {
+  text-align: center;
+}
+
+.burgerPic {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  height: 200px;
+  width: 200px;
+}
+
+#title {
+  text-align: center;
+  padding: 5%;
+}
+
+
+#table1 {
+  float: left;
+
+}
+
+#table2 {
+  float: right;
+}
