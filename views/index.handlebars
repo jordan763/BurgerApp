@@ -2,56 +2,38 @@
 
 <img src="https://storcpdkenticomedia.blob.core.windows.net/media/recipemanagementsystem/media/recipe-media-files/recipes/retail/x17/2019_df_retail_butter-burger_20912_760x580.jpg?ext=.jpg" alt="burger" class="burgerPic">
 
-{{!-- <h2>Burgers Devoured</h2>
-
-<ul>
-  {{#each cats}}
-    {{#unless sleepy}}
-      {{> cats/cat-block sleep=true}}
-    {{/unless}}
-  {{/each}}
-</ul> --}}
-
-{{!-- <h2>Burgers ready to be Devoured</h2> --}}
-
-
-<table id= "table1">
+<table id="table1">
   <tr>
     <th>Burgers Devoured</th>
   </tr>
   <tr>
-    <td><ul>
-  {{#each cats}}
-    {{#unless sleepy}}
-      {{> cats/cat-block sleep=true}}
-    {{/unless}}
-  {{/each}}
-</ul></td>
+    <td>
+      <ul>
+        {{#each cats}}
+        {{#unless sleepy}}
+        {{> cats/cat-block sleep=true}}
+        {{/unless}}
+        {{/each}}
+      </ul>
+    </td>
   </tr>
-  </table>
-
-  <table id="table2">
-    <th>Burgers ready to be Devoured</th>
-  </tr>
-  <tr>
-    <td><ul>
-  {{#each cats}}
-    {{#if sleepy}}
-      {{> cats/cat-block sleep=false}}
-    {{/if}}
-  {{/each}}
-</ul></td>
 </table>
 
+<table id="table2">
+  <th>Burgers ready to be Devoured</th>
+  </tr>
+  <tr>
+    <td>
+      <ul>
+        {{#each cats}}
+        {{#if sleepy}}
+        {{> cats/cat-block sleep=false}}
+        {{/if}}
+        {{/each}}
+      </ul>
+    </td>
+</table>
 
-
-{{!-- <ul>
-  {{#each cats}}
-    {{#if sleepy}}
-      {{> cats/cat-block sleep=false}}
-    {{/if}}
-  {{/each}}
-</ul> --}}
 
 <h2 class="addBurger">Add a Burger</h2>
 <form class="create-form">
@@ -59,6 +41,7 @@
   <div class="form-group">
     <label for="ca">Type of Burger:</label>
     <input type="text" id="ca" name="name">
+      <button type="submit">Submit</button>
   </div>
 
   <div class="form-group" hidden>
@@ -67,5 +50,4 @@
     <input type="radio" name="sleepy" value="0"> Awake
   </div>
 
-  <button type="submit">Submit</button>
 </form>
